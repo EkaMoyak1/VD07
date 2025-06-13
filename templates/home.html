@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="display-4 mb-4">Welcome to MyApp</h1>
+        <p class="lead">A modern web application built with Flask and Bootstrap</p>
+        {% if not current_user.is_authenticated %}
+            <div class="d-flex gap-3 justify-content-center">
+        <a href="{{ url_for('main.login') }}" class="btn btn-primary btn-lg px-4">Войти</a>
+        <a href="{{ url_for('main.register') }}" class="btn btn-outline-primary btn-lg px-4">Регистрация</a>
+    </div>
+        {% else %}
+            <a href="{{ url_for('main.account') }}" class="btn btn-primary btn-lg px-4 gap-3">Your Account</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
